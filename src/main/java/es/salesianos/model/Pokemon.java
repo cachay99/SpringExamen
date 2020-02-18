@@ -8,6 +8,7 @@ public class Pokemon {
 	private String health;
 	private String attack;
 	private boolean currentFighter;
+	private boolean wild;
 
 	public String getName() {
 		return name;
@@ -39,6 +40,14 @@ public class Pokemon {
 
 	public void setCurrentFighter(boolean currentFighter) {
 		this.currentFighter = currentFighter;
+	}
+
+	public boolean isWild() {
+		return wild;
+	}
+
+	public void setWild(boolean wild) {
+		this.wild = wild;
 	}
 
 }

@@ -58,6 +58,9 @@ public class IndexController {
 		}
 		if (!StringUtils.isEmpty(pokemonForm.isCurrentFighter())) {
 			pokemon.setCurrentFighter(false);
+		}		
+		if (!StringUtils.isEmpty(pokemonForm.isWild())) {
+			pokemon.setWild(false);
 		}
 	}
 

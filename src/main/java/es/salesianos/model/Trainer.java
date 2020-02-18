@@ -10,22 +10,18 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Trainer {
-
+	
+	private static Logger log = LogManager.getLogger(Trainer.class);
+	private String name;
+	
 	@Autowired
 	private InterfacePokeball pokeball;
-
-	private static Logger log = LogManager.getLogger(Trainer.class);
-	
-	private String name;
+	@Autowired
 	private Pokemon pokemon;
+	
 	private List <Pokemon> pokemons_team= new ArrayList<Pokemon>();
 	private List <Pokemon> pokemons_captured= new ArrayList<Pokemon>(); 
 
-	public Trainer() {
-	
-	}
-	
-	
 	public String getName() {
 		return name;
 	}
@@ -42,7 +38,7 @@ public class Trainer {
 		this.pokemons_team = pokemons;
 	}
 
-	public void addPokemons(Pokemon pokemons) {
+	public void addPokemons_team(Pokemon pokemons) {
 		this.pokemons_team.add(pokemons);
 		if(this.pokemons_team.size() >= 7) {
 			log.debug("No se puede insertar mas pokemons al equipo");

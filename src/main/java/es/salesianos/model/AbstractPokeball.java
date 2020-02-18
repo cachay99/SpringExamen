@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 public abstract class AbstractPokeball implements InterfacePokeball {
 
-	private static Logger log = LogManager.getLogger(Trainer.class);
+	private static Logger log = LogManager.getLogger(AbstractPokeball.class);
 	
 	private String name;
 	private int probability;
@@ -34,7 +34,8 @@ public abstract class AbstractPokeball implements InterfacePokeball {
 		Random random = new Random();
 		int chance = random.nextInt(59)+1;
 		if(chance <= probability) {	
-			team.addPokemons(pokemon);
+			pokemon.setWild(false);
+			team.addPokemons_team(pokemon);
 			team.addPokemons_captured(pokemon);
 			if(team.getPokemons().size() < 6) {
 				log.debug("Has capturado a " + pokemon.getName() + "!");
