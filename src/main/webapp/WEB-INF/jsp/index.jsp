@@ -16,17 +16,20 @@
 		<input type="submit" value="Guardar nombre entrenador" />
 	</form:form>
 	<br /> El nombre del entrenador es
-	<span><c:out value="${Trainer.getName()}" /></span>
+	<span><c:out value="${trainer.getName()}" /></span>
 	<br />
 	<br />
 	<form:form action="insertPokemon" method="post" modelAttribute="pokemon">
-		<span>Pokemon para el entrenador:</span>
+		<span>Nombre Pokemon:</span>
 		<form:input type="text" path="name" />
+		<span>Vida:</span>
 		<form:input type="text" path="health" />
+		<span>Daño:</span>
 		<form:input type="text" path="attack" />
 		<input type="submit" value="Guardar Pokemon" />
 	</form:form>
 	
+		<span>Equipo: </span>
 		<table>
 			<thead>
 				<th>Nombre</th>
@@ -34,7 +37,7 @@
 				<th>Daño</th>
 			</thead>
 
-			<c:forEach items="${Trainer.getPokemons()}" var="pokemon">
+			<c:forEach items="${trainer.getPokemons()}" var="pokemon">
 				<tr>
 					<td>${pokemon.name}</td>
 					<td>${pokemon.health}</td>

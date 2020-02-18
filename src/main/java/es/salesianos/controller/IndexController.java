@@ -41,11 +41,11 @@ public class IndexController {
 	}
 
 	@PostMapping("insertPokemon")
-	public ModelAndView pokemonInsert(@ModelAttribute("pokemon") Pokemon poke) {
+	public ModelAndView pokemonInsert(@ModelAttribute("pokemon") Pokemon pokeForm) {
 
 		ModelAndView modelAndView = new ModelAndView("index");
-		addPageDataPokemon(poke);
-		trainer.addPokemons(pokemon);
+		addPageDataPokemon(pokeForm);
+		trainer.addPokemons(pokeForm);
 		addAllObjects(modelAndView);
 		return modelAndView;
 	}
@@ -66,7 +66,7 @@ public class IndexController {
 
 	private void addPageDataTrainer(Trainer trainerForm) {
 		if (!StringUtils.isEmpty(trainerForm.getName())) {
-			trainerForm.setName(trainerForm.getName());
+			trainer.setName(trainerForm.getName());
 		}
 
 	}

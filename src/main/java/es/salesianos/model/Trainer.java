@@ -40,6 +40,7 @@ public class Trainer {
 
 	public void addPokemons(Pokemon pokemons) {
 		this.pokemons_team.add(pokemons);
+		if(this.pokemons_team.size() >= 5)
 	}
 
 	public Pokemon getPokemon() {
