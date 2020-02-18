@@ -10,11 +10,12 @@ import org.springframework.stereotype.Component;
 public class Trainer {
 
 	@Autowired
-	private AbstractPokeball pokeball;
+	private InterfacePokeball pokeball;
 
 	private String name;
 	private Pokemon pokemon;
-	private List <Pokemon> pokemons= new ArrayList<Pokemon>(); 
+	private List <Pokemon> pokemons_team= new ArrayList<Pokemon>();
+	private List <Pokemon> pokemons_captured= new ArrayList<Pokemon>(); 
 
 	public String getName() {
 		return name;
@@ -25,15 +26,15 @@ public class Trainer {
 	}
 
 	public List <Pokemon> getPokemons() {
-		return pokemons;
+		return pokemons_team;
 	}
 
 	public void setPokemons(List <Pokemon> pokemons) {
-		this.pokemons = pokemons;
+		this.pokemons_team = pokemons;
 	}
 
 	public void addPokemons(Pokemon pokemons) {
-		this.pokemons.add(pokemons);
+		this.pokemons_team.add(pokemons);
 	}
 
 	public Pokemon getPokemon() {
@@ -44,11 +45,19 @@ public class Trainer {
 		this.pokemon = pokemon;
 	}
 
-	public AbstractPokeball getPokeball() {
+	public InterfacePokeball getPokeball() {
 		return pokeball;
 	}
 
-	public void setPokeball(AbstractPokeball pokeball) {
+	public void setPokeball(InterfacePokeball pokeball) {
 		this.pokeball = pokeball;
+	}
+
+	public List <Pokemon> getPokemons_captured() {
+		return pokemons_captured;
+	}
+
+	public void setPokemons_captured(List <Pokemon> pokemons_captured) {
+		this.pokemons_captured = pokemons_captured;
 	}
 }

@@ -11,20 +11,35 @@
 </head>
 <body>
 	<form:form action="insert" method="post" modelAttribute="trainer">
-		<span>Elige Pokemon inicial:</span>
+		<span>Nombre del entrenador:</span>
 		<form:input type="text" path="name" />
 		<input type="submit" value="Guardar nombre entrenador" />
 	</form:form>
 	<br /> El nombre del entrenador es
 	<span><c:out value="${trainer.name}" /></span>
 	<br />
-	<form:form action="insert" method="post" modelAttribute="trainer">
-		<span>Nuevo item:</span>
-		<span>Nombre:</span>
-		<form:input type="text" path="pokeball.name" />
-		<span>cantidad:</span>
-		<form:input type="text" path="pokeball.number" />
-		<input type="submit" value="guardar item" />
+	<form:form action="insertPokemon" method="post" modelAttribute="trainer">
+		<span>Pokemon para el entrenador:</span>
+		<form:input type="text" path="name" />
+		<input type="submit" value="Guardar Pokemon" />
 	</form:form>
+	
+	<c:if test="${not empty ListPokemons}">
+		<table>
+			<thead>
+				<th>Nombre</th>
+				<th>Vida</th>
+				<th>Daño</th>
+			</thead>
+
+			<c:forEach items="${ListPokemons}" var="pokemon">
+				<tr>
+					<td>${pokemon.name}</td>
+					<td>${pokemon.health}</td>
+					<td>${pokemon.attack}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:if>
 </body>
 </html>
