@@ -17,6 +17,11 @@ public class Trainer {
 	private List <Pokemon> pokemons_team= new ArrayList<Pokemon>();
 	private List <Pokemon> pokemons_captured= new ArrayList<Pokemon>(); 
 
+	public Trainer() {
+
+	}
+	
+	
 	public String getName() {
 		return name;
 	}
