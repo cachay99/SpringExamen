@@ -7,6 +7,7 @@ public class Pokemon {
 	private String name;
 	private String health;
 	private String attack;
+	private boolean currentFighter;
 
 	public String getName() {
 		return name;
@@ -30,6 +31,14 @@ public class Pokemon {
 	
 	public void setAttack(String attack) {
 		this.attack = attack;
+	}
+
+	public boolean isCurrentFighter() {
+		return currentFighter;
+	}
+
+	public void setCurrentFighter(boolean currentFighter) {
+		this.currentFighter = currentFighter;
 	}
 
 }

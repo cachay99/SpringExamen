@@ -19,14 +19,14 @@
 	<span><c:out value="${trainer.getName()}" /></span>
 	<br />
 	<br />
-	<form:form action="insertPokemon" method="post" modelAttribute="pokemon">
+	<form:form action="event" method="post" modelAttribute="pokemon">
 		<span>Nombre Pokemon:</span>
 		<form:input type="text" path="name" />
 		<span>Vida:</span>
 		<form:input type="text" path="health" />
 		<span>Daño:</span>
 		<form:input type="text" path="attack" />
-		<input type="submit" value="Guardar Pokemon" />
+		<input name="capture" type="submit" value="Lanzar pokeball" />
 	</form:form>
 	
 		<span>Equipo: </span>

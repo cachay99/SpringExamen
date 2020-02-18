@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import es.salesianos.model.AbstractPokeball;
 import es.salesianos.model.Pokemon;
 import es.salesianos.model.Trainer;
 
@@ -19,6 +20,8 @@ public class IndexController {
 	private Trainer trainer;
 	@Autowired
 	private Pokemon pokemon;
+	@Autowired
+	private AbstractPokeball pokeball;
 
 	@GetMapping("/")
 	public ModelAndView index() {
@@ -40,16 +43,6 @@ public class IndexController {
 		return modelAndView;
 	}
 
-	@PostMapping("insertPokemon")
-	public ModelAndView pokemonInsert(@ModelAttribute("pokemon") Pokemon pokeForm) {
-
-		ModelAndView modelAndView = new ModelAndView("index");
-		addPageDataPokemon(pokeForm);
-		trainer.addPokemons(pokeForm);
-		addAllObjects(modelAndView);
-		return modelAndView;
-	}
-
 	private void addPageDataPokemon(Pokemon pokemonForm) {
 		if (!StringUtils.isEmpty(pokemonForm.getName())) {
 			pokemon.setName(pokemonForm.getName());
@@ -62,6 +55,9 @@ public class IndexController {
 		if (!StringUtils.isEmpty(pokemonForm.getAttack())) {
 			pokemon.setAttack(pokemonForm.getAttack());
 		}
+		if (!StringUtils.isEmpty(pokemonForm.isCurrentFighter())) {
+			pokemon.setCurrentFighter(false);
+		}
 	}
 
 	private void addPageDataTrainer(Trainer trainerForm) {
@@ -69,5 +65,13 @@ public class IndexController {
 			trainer.setName(trainerForm.getName());
 		}
 
+	}
+	@PostMapping(path = "/event", params = {"capture"})
+	public ModelAndView pokemonCapture(@ModelAttribute("pokemon") Pokemon poke) {	
+		ModelAndView modelAndView = new ModelAndView("index");
+		addPageDataPokemon(poke);
+		pokeball.catchPokemon(poke, trainer);
+		addAllObjects(modelAndView);
+		return modelAndView;
 	}
 }

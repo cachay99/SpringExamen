@@ -3,6 +3,8 @@ package es.salesianos.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,13 +14,15 @@ public class Trainer {
 	@Autowired
 	private InterfacePokeball pokeball;
 
+	private static Logger log = LogManager.getLogger(Trainer.class);
+	
 	private String name;
 	private Pokemon pokemon;
 	private List <Pokemon> pokemons_team= new ArrayList<Pokemon>();
 	private List <Pokemon> pokemons_captured= new ArrayList<Pokemon>(); 
 
 	public Trainer() {
-
+	
 	}
 	
 	
@@ -40,7 +44,10 @@ public class Trainer {
 
 	public void addPokemons(Pokemon pokemons) {
 		this.pokemons_team.add(pokemons);
-		if(this.pokemons_team.size() >= 5)
+		if(this.pokemons_team.size() >= 7) {
+			log.debug("No se puede insertar mas pokemons al equipo");
+			pokemons_team.remove(0);
+		}
 	}
 
 	public Pokemon getPokemon() {
