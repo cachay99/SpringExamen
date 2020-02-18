@@ -5,11 +5,11 @@ import org.springframework.stereotype.Component;
 
 //Masterball
 @Component
-@Profile("UltraPokeball")
-public class UltraPokeball extends AbstractPokeball {
+@Profile("Masterball")
+public class Masterball extends AbstractPokeball {
 
-	public UltraPokeball() {
-		setName("Ultraball");
-		setProbability(50);
+	public Masterball() {
+		setName("Masterball");
+		setProbability(100);
 	}
 }

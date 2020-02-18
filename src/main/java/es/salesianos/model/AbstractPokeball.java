@@ -35,6 +35,7 @@ public abstract class AbstractPokeball implements InterfacePokeball {
 		int chance = random.nextInt(59)+1;
 		if(chance <= probability) {	
 			team.addPokemons(pokemon);
+			team.addPokemons_captured(pokemon);
 			if(team.getPokemons().size() < 6) {
 				log.debug("Has capturado a " + pokemon.getName() + "!");
 			}else {

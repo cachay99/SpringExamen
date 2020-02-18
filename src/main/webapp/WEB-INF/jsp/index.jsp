@@ -28,22 +28,47 @@
 		<form:input type="text" path="attack" />
 		<input name="capture" type="submit" value="Lanzar pokeball" />
 	</form:form>
-	
-		<span>Equipo: </span>
-		<table>
-			<thead>
-				<th>Nombre</th>
-				<th>Vida</th>
-				<th>Daño</th>
-			</thead>
+	<br />
+	<span>Equipo: </span>
+	<table>
+		<thead>
+			<th>Nombre</th>
+			<th>Vida</th>
+			<th>Daño</th>
+			<th>Pokemon activo</th>
+		</thead>
 
-			<c:forEach items="${trainer.getPokemons()}" var="pokemon">
-				<tr>
-					<td>${pokemon.name}</td>
-					<td>${pokemon.health}</td>
-					<td>${pokemon.attack}</td>
-				</tr>
-			</c:forEach>
-		</table>
+		<c:forEach items="${trainer.getPokemons()}" var="pokemon">
+			<tr>
+				<td>${pokemon.name}</td>
+				<td>${pokemon.health}</td>
+				<td>${pokemon.attack}</td>
+				<td><c:out value="${pokemon.currentFighter}" /></td>
+				<td><form:form action="changePokemon${pokemon.name}"
+						method="post" modelAttribute="pokemon">
+						<input type="submit" value="Cambiar pokemon"></input>
+					</form:form></td>
+			</tr>
+		</c:forEach>
+	</table>
+	<br />
+	<br />
+	<span>Pokemons capturados: </span>
+	<table>
+		<thead>
+			<th>Nombre</th>
+			<th>Vida</th>
+			<th>Daño</th>
+		</thead>
+
+		<c:forEach items="${trainer.getPokemons_captured()}" var="pokemon">
+			<tr>
+				<td>${pokemon.name}</td>
+				<td>${pokemon.health}</td>
+				<td>${pokemon.attack}</td>
+			</tr>
+		</c:forEach>
+	</table>
+
 </body>
 </html>

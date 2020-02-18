@@ -49,6 +49,9 @@ public class Trainer {
 			pokemons_team.remove(0);
 		}
 	}
+	public void addPokemons_captured(Pokemon pokemons) {
+		this.pokemons_captured.add(pokemons);
+	}
 
 	public Pokemon getPokemon() {
 		return pokemon;
